@@ -1,60 +1,132 @@
-# Dicoding: Android Fundamental Submission 📱
-<p>This is a repository that contains the source code of my submissions project at Dicoding "Belajar Fundamental Aplikasi Android" course, start from the first submission until the final submission. This course is a part of self-paced learning at Bangkit 2023 Batch 2 Mobile Development learning path. I try to implement the best practices of the Kotlin programming language and Android framework to this project.</p>
+# GitHub User App 🚀
 
-## Disclaimer ⚠️
-This repository is created for sharing and educational purposes only. Plagiarism is unacceptable and is not my responsibility as the author.
+This Android application allows users to search for GitHub users, view their profiles, and manage their favorite users. It leverages modern Android development practices, including Kotlin, Coroutines, Flow, Koin for dependency injection, View Binding, and the Android Architecture Components. The app also supports dark and light themes.
 
-## Criteria Submission 1
-### 1. Search User
-The conditions that must be met are as follows:
-- Displays a list of user data from the API using RecyclerView with minimal data, avatar photo and username.
-- User search using data from the API runs well.
-- Users can view the detail page of the search list results.
-    
-### 2. User Details
-The conditions that must be met are as follows:
-- There is detailed information from a user. The following is some information that must be displayed on the application page.
-    - Avatar Photo
-    - Username
-    - Name
-    - Number of Followers
-    - Number of Following
-- Note: Make sure all the information is there.
-- Displays List Follower & List Following fragments taken from the API.
-- Using Tab Layout and ViewPager as navigation between the List Follower and List Following pages.
+## 🌟 Key Features
 
-### 3. Loading Indicators
-There is a loading indicator when the application loads data in all sections that fetch data from the API: 
-- List of user data
-- User details
-- List follows
-- Follower list
+- **User Search:** Search for GitHub users by username. 🔍
+- **Detailed User Profiles:** View detailed information about a user, including their avatar, username, name, company, location, and bio. ℹ️
+- **Followers/Following Lists:** Browse a user's followers and following lists. 👥
+- **Favorite User Management:** Add and remove users from a favorites list. ❤️
+- **Dark/Light Theme Support:** Switch between dark and light themes. 🌙☀️
+- **Splash Screen:** A visually appealing splash screen is displayed on app launch. ⏳
 
-## Criteria Submission 2
-### 1. Favorite User with Database
-The conditions that must be met are as follows:
-- The application must be able to add and remove users from the favorites list.
-- The application must have a page that displays a list of favorites.
-- Displays the detail page of the favorites list.
+## 🛠️ Tech Stack
 
-### 2. Theme Settings
-The conditions that must be met are as follows:
-- Create a menu to change themes (light theme or dark theme) using key-value storage.
-- Make sure the theme remains implemented even if the application is closed and reopened.
-  - The method is to observe the data and implement the theme on the first page.
-- Make sure each component and indicator remains clearly visible when changing themes (Not when the theme is dark, the text and indicators are also black)
+- **Programming Language:** Kotlin
+- **UI Framework:** Android SDK
+- **Asynchronous Programming:** Coroutines & Flow
+- **Dependency Injection:** Koin
+- **View Binding:** Android View Binding
+- **Image Loading:** Glide
+- **Architecture Components:** LiveData, ViewModel
+- **Local Database:** Room (likely in the `:core` module)
+- **Networking:** Retrofit (likely in the `:core` module)
+- **Build Tool:** Gradle (Kotlin DSL)
+- **Kotlin Symbol Processing (KSP):** For Room Compiler
+- **Kotlin Parcelize:** For easier data passing between components
 
-## Wireframe Submission
-![Wireframe_Submission!](https://dicoding-web-img.sgp1.cdn.digitaloceanspaces.com/original/academy/dos:e03b56048534db077b076722497b517e20210909103516.png "Wireframe Submission")
+## 📦 Getting Started
 
-## Setting Up API Key and Base URL
-To ensure seamless integration with the [Github API](https://api.github.com/), please follow these steps:
+Follow these instructions to get the project up and running on your local machine.
 
-1. Open the project in Android Studio.
-2. Locate the `local.properties` file in the root directory of the project.
-3. Add the following lines to the `local.properties` file:
+### Prerequisites
 
-```properties
-API_KEY=your_api_key_here
-BASE_URL=your_base_url_here
+- Android Studio installed
+- Android SDK configured
+- Gradle installed (usually bundled with Android Studio)
+- A device or emulator to run the application
+
+### Installation
+
+1.  **Clone the repository:**
+
+    ```bash
+    git clone https://github.com/mhmdnurulkarim/Github-User.git
+    ```
+
+2.  **Open the project in Android Studio:**
+
+    - Launch Android Studio.
+    - Select "Open an Existing Project" and navigate to the cloned repository.
+
+3.  **Sync Gradle:**
+
+    - Android Studio will prompt you to sync the Gradle files. Click "Sync Now."
+
+### Running Locally
+
+1.  **Build the project:**
+
+    - In Android Studio, go to `Build > Make Project`.
+
+2.  **Run the application:**
+
+    - Connect your Android device or start an emulator.
+    - Click the "Run" button in Android Studio (or `Run > Run app`).
+    - Select your device/emulator.
+
+## 📂 Project Structure
+
 ```
+├── app/
+│   ├── build.gradle.kts                  # Gradle build script for the app module
+│   ├── src/main/
+│   │   ├── AndroidManifest.xml           # Android manifest file
+│   │   ├── java/com/mhmdnurulkarim/githubuser/
+│   │   │   ├── di/                      # Koin DI modules
+│   │   │   │   └── AppModule.kt
+│   │   │   ├── darkTheme/               # Dark theme related files
+│   │   │   │   ├── DarkThemeActivity.kt
+│   │   │   │   └── DarkThemeViewModel.kt
+│   │   │   ├── detailUserActivity/      # Detail user activity related files
+│   │   │   │   ├── DetailUserActivity.kt
+│   │   │   │   └── DetailUserViewModel.kt
+│   │   │   ├── followersFragment/       # Followers fragment related files
+│   │   │   │   ├── FollowersFragment.kt
+│   │   │   │   └── FollowersViewModel.kt
+│   │   │   ├── followingFragment/       # Following fragment related files
+│   │   │   │   ├── FollowingFragment.kt
+│   │   │   │   └── FollowingViewModel.kt
+│   │   │   ├── mainActivity/            # Main activity related files
+│   │   │   │   ├── MainActivity.kt
+│   │   │   │   └── MainViewModel.kt
+│   │   │   ├── splashActivity/          # Splash activity related files
+│   │   │   │   ├── SplashActivity.kt
+│   │   │   │   └── SplashViewModel.kt
+│   │   │   ├── SectionPagerAdapter.kt   # ViewPager adapter for followers/following
+│   │   │   ├── MyApplication.kt         # Application class (Koin initialization)
+│   │   │   └── utils/                   # Utility classes
+│   │   │       └── Const.kt
+│   │   └── res/                        # Resources (layouts, drawables, etc.)
+│   └── ...
+├── core/                               # Core module (likely contains data layer, domain layer, etc.)
+│   └── ...
+├── favorite/                           # Dynamic feature module for favorites (optional)
+│   └── ...
+├── build.gradle.kts                      # Top-level Gradle build script
+├── settings.gradle.kts                   # Settings file for Gradle
+└── ...
+```
+
+## 📸 Screenshots
+
+(Screenshots will be added here)
+
+## 🤝 Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1.  Fork the repository.
+2.  Create a new branch for your feature or bug fix.
+3.  Make your changes and commit them with descriptive messages.
+4.  Push your changes to your fork.
+5.  Submit a pull request.
+
+## 📬 Contact
+
+If you have any questions or suggestions, feel free to contact me at [mhmdnurulkarim@gmail.com](mailto:mhmdnurulkarim@gmail.com).
+
+## 💖 Thanks Message
+
+Thank you for checking out the Restaurant App! We hope you find it useful and enjoyable. Your feedback and contributions are greatly appreciated.
